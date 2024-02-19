@@ -32,6 +32,7 @@ public final class LogIn {
                         System.out.println("不存在该用户,请您重新输入账号和密码");
                         continue;
                     }
+                    System.out.println("登录成功");
                     return resultSet.getInt("id");
                 } catch (SQLException e) {
                     System.out.println("操作失败");
