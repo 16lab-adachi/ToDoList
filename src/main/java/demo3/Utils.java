@@ -2,6 +2,9 @@ package demo3;
 
 import java.sql.*;
 
+/**
+ * @author ADACHI
+ */
 public final class Utils {
     /**
      *
@@ -28,19 +31,20 @@ public final class Utils {
      */
     public static int executeUpdate(Connection connection,String sql) throws Exception {
         Statement statement = connection.createStatement();
-        return statement.executeUpdate(sql);
+        int i = statement.executeUpdate(sql);
+        statement.close();
+        return i;
     }
 
     /**
      *
      * @param connection 连接
-     * @param sql SQL语句
-     * @return 返回查询语句对应的ResultSet
+     * @param sql 要执行的SQL语句
+     * @return 返回带有参数的预编译PreparedStatement
      * @throws Exception 抛出异常
      */
-    public static ResultSet executeQuery(Connection connection, String sql) throws Exception{
-        Statement statement = connection.createStatement();
-        return statement.executeQuery(sql);
+    public static PreparedStatement prepareStatement(Connection connection, String sql) throws Exception{
+        return connection.prepareStatement(sql);
     }
 
 }
