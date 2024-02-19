@@ -11,9 +11,11 @@ public class Main {
         String url = "jdbc:mysql://localhost:3306/mytest?useSSL=false&serverTimezone=UTC";
         String userName = "";
         String password = "";
+        //开启连接
         Connection connection = Utils.getConnection(url, userName, password);
+        //检查账号密码
         int userId = LogIn.check(connection);
-        System.out.println("登录成功");
+        //读取用户需要进行的操作并调用对应的方法
         Scanner scanner = new Scanner(System.in);
         while (true){
             System.out.println("请选择你想要的执行的操作");
@@ -32,6 +34,8 @@ public class Main {
                     TodoCrud.delete(connection,userId);
                     break;
                 case 5:
+                    //关闭连接
+                    connection.close();
                     return;
                 default:
                     break;
