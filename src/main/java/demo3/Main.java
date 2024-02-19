@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         String url = "jdbc:mysql://localhost:3306/mytest?useSSL=false&serverTimezone=UTC";
-        String userName = "root";
-        String password = "123456";
+        String userName = "";
+        String password = "";
         Connection connection = Utils.getConnection(url, userName, password);
         int userId = LogIn.check(connection);
         System.out.println("登录成功");
